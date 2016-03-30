@@ -51,6 +51,7 @@ var project 	 = 'projectname', // Project name, used for build zip.
 		rename       = require('gulp-rename'),
 		concat       = require('gulp-concat'),
 		notify       = require('gulp-notify'),
+		cmq          = require('gulp-combine-media-queries'),
 		runSequence  = require('gulp-run-sequence'),
 		sass         = require('gulp-sass'),
 		plugins      = require('gulp-load-plugins')({ camelize: true }),
@@ -71,14 +72,18 @@ var project 	 = 'projectname', // Project name, used for build zip.
 */
 gulp.task('browser-sync', function() {
 	var files = [
-					'**/*.html',
+					'**/*.php',
 					'**/*.{png,jpg,gif}'
 				];
 	browserSync.init(files, {
 
-		server: {
-		   baseDir: "./"
-	   },
+		// Read here http://www.browsersync.io/docs/options/
+		proxy: url,
+
+		// port: 8080,
+
+		// Tunnel the Browsersync server through a random Public URL
+		// tunnel: true,
 
 		// Attempt to use the URL "http://my-private-site.localtunnel.me"
 		// tunnel: "kaseyacontentrepo",
@@ -118,6 +123,7 @@ gulp.task('styles', function () {
 				.pipe(plumber.stop())
 				.pipe(gulp.dest('./'))
 				.pipe(filter('**/*.css')) // Filtering stream to only css files
+				.pipe(cmq()) // Combines Media Queries
 				.pipe(reload({stream:true})) // Inject Styles when style file is created
 				.pipe(notify({ message: 'Styles task complete', onLast: true }));
 });

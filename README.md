@@ -1,4 +1,3 @@
-# My Static Boilerplate
+# My WordPress Child Theme
 
-A simple static boilerplate, using gulp for SCSS etc.
-Influenced by my simple child theme.
+A simple child theme boilerplate, using gulp for SCSS etc.
