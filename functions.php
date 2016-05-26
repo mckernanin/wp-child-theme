@@ -62,7 +62,7 @@ class ChildTheme {
 	 */
 	public function typekit() {
 		wp_enqueue_script( 'theme_typekit', 'https://use.typekit.net/xbk1ivk.js' );
-		wp_inline_script( 'try{Typekit.load({ async: true });}catch(e){}' );
+		wp_add_inline_script( 'theme_typekit', 'try{Typekit.load({ async: true });}catch(e){}' );
 	}
 }
 
