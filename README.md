@@ -3,6 +3,7 @@ A WordPress child theme, featuring Gulp, SASS, an object-oriented functions.php 
 
 ## Setup
 You'll need to have node and npm installed.
+
 1. Clone this repository.
 
 2. In the cloned directory, run the following: `rm -rf .git && npm install`
