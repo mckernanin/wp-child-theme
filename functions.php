@@ -5,9 +5,9 @@ class ChildTheme {
 	function __construct() {
 
 		add_filter( 'upload_mimes', 		array( $this, 'mime_types' ) );
-		add_filter( 'body_class',   		array( $this, 'add_slug_body_class' ) );
+		add_filter( 'body_class',   		array( $this, 'add_slug_to_body_class' ) );
 		add_action( 'send_headers', 		array( $this, 'custom_headers' ) );
-		add_action( 'wp_enqueue_scripts', 	array( $this, 'typekit' ) );
+		// add_action( 'wp_enqueue_scripts', 	array( $this, 'typekit' ) );
 
 		$this->roots_support();
 	}
@@ -26,7 +26,7 @@ class ChildTheme {
 	 * Add page slug as a body class.
 	 */
 
-	public function add_slug_body_class( $classes ) {
+	public function add_slug_to_body_class( $classes ) {
 		global $post;
 		if ( isset( $post ) ) {
 			$classes[] = $post->post_type . '-' . $post->post_name;
@@ -58,10 +58,11 @@ class ChildTheme {
 	}
 
 	/**
-	 * Add typekit support if needed. Replace URL with one from the kit you create.
+	 * Add typekit support if needed. Replace $kit_id with one from the kit you create.
 	 */
 	public function typekit() {
-		wp_enqueue_script( 'theme_typekit', 'https://use.typekit.net/xbk1ivk.js' );
+		$kit_id = 'abcd123';
+		wp_enqueue_script( 'theme_typekit', 'https://use.typekit.net/' . $kit_id . '.js' );
 		wp_add_inline_script( 'theme_typekit', 'try{Typekit.load({ async: true });}catch(e){}' );
 	}
 }
