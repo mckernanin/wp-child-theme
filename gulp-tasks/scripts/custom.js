@@ -14,6 +14,7 @@ module.exports = function() {
 			suffix: '.min'
 		}))
 		.pipe( plugins.uglify() )
+		.pipe( plugins.plumber.stop() )
 		.pipe( gulp.dest( config.js.custom.dest ) )
 		.pipe( plugins.notify({ message: 'Custom Scripts Complete', onLast: true }));
 }

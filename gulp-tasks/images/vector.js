@@ -4,6 +4,7 @@ var config     = require( root + '/gulpConfig.json');
 var plugins    = require('gulp-load-plugins')(config.loadOpts);
 module.exports = function() {
 	return gulp.src( config.vector.files )
+		.pipe( plugins.plumber() )
 		.pipe( plugins.rimraf({ force: true }))
 		.pipe( plugins.svgmin({
 				plugins: [{
@@ -12,5 +13,6 @@ module.exports = function() {
 						removeUselessStrokeAndFill: false
 				}]
 		}))
+		.pipe( plugins.plumber.stop() )
 		.pipe( gulp.dest( config.vector.dest ) );
 }

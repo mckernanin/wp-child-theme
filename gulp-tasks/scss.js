@@ -15,6 +15,7 @@ module.exports = function() {
 			browsers : [ 'last 2 versions' ],
 			cascade  : false
 		}))
+		.pipe( plugins.plumber.stop() )
 		.pipe( gulp.dest( config.scss.dest ) )
 		.pipe( plugins.browserSync.stream() )
 		.pipe( plugins.notify({ message: 'Styles task complete', onLast: true }));

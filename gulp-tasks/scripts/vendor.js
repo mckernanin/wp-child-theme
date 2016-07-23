@@ -4,6 +4,7 @@ var config     = require( root + '/gulpConfig.json');
 var plugins    = require('gulp-load-plugins')(config.loadOpts);
 module.exports = function() {
 	return gulp.src( config.js.vendor.files )
+		.pipe( plugins.plumber() )
 		.pipe( plugins.concat( config.js.vendor.name + '.js' ))
 		.pipe( gulp.dest( config.js.vendor.dest ))
 		.pipe( plugins.rename( {
@@ -11,6 +12,7 @@ module.exports = function() {
 			suffix: '.min'
 		}))
 		.pipe( plugins.uglify() )
+		.pipe( plugins.plumber.stop() )
 		.pipe( gulp.dest( config.js.vendor.dest ) )
 		.pipe( plugins.notify({ message: 'Vendor Scripts Complete', onLast: true }));
 }
