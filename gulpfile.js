@@ -20,3 +20,10 @@ gulp.task( 'scripts', function() {
 		plugins.browserSync.reload
 	);
 });
+
+gulp.task( 'lint', function() {
+	plugins.runSequence(
+		'lint:js',
+		'lint:styles'
+	);
+});
