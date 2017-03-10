@@ -1,4 +1,6 @@
 # Kevin's WordPress Child Theme
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/mckernanin/wp-child-theme.svg)](https://greenkeeper.io/)
 A WordPress child theme, featuring Gulp, SASS, an object-oriented functions.php file, and support for [Soil](http://roots.io). ESLint and Style Lint configuration files are included for Atom's linting plugins.
 
 ## Setup
